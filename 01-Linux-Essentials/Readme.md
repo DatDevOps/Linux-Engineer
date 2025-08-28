@@ -4,7 +4,7 @@
 
 1. Start by running the uname command command (a GNU utility) to print the kernel name. Type uname and then hit enter.
 
-  # uname
+  [#] uname
 
 You should see the output Linux.
 
