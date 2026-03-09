@@ -650,15 +650,3 @@ root@# journalctl -b -1 [outputs logs during the previous boot, -1]
 
 root@# journalctl -b [outputs logs during the current boot, 0. No need to pass 0 as it is the default with -b flag]
 
-root@#
-
-root@#
-
-
-
-
-
-
-root@cron.daily#
-root@cron.daily#
-root@cron.daily#
