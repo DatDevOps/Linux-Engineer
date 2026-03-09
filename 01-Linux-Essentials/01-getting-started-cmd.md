@@ -1,4 +1,16 @@
-**Rememeber to 'sudo -i (login in as root) or 'sudo su -' (same as sudo -i) or 'sudo su' (switches user to root access) to have access to the Linux root directory and other files not in the home/user directory (i.e ~ or /home)
+**Rememeber to:**
+
+- 'sudo -i (login in as root)
+    - run "pwd" (shows you are in as /root) or "whoami" (shows your are root)
+
+- 'sudo su -'
+    - run "pwd" (shows you are in as /root) or "whoami" (shows your are root)
+
+- 'sudo su' (switches user to root access keeping the user environment) to have access to the Linux root directory and other files not in the home/user directory (i.e ~ or /home)
+    - run "pwd" (shows you are in as /home/cloud_user) or "whoami" (shows your are root)
+
+- 'sudo su - YOUR_SPECIFIC_USERNAME' (switches user to root but keeps the user environment )
+    - run "pwd" (shows you are in as /home/cloud_user) or "whoami" (shows your are cloud_user)
 
 ***Learn About the Linux System***
 
@@ -6,9 +18,11 @@
 
     ~# uname
 
-You should see the output Linux.
+  You should see the output Linux.
 
-2. You will now check the Linux kernel version on the lab system using uname with an additional -a OPTION, along with the base command. These options are often called flags or parameters.
+2. You will now check the Linux kernel version on the lab system using uname with an additional -a OPTION, along with the base command. These options are often called flags or   parameters.
+
+    ~# uname -a
 
 In the bash shell, type the command uname -a and then hit enter. This will display information about the current Linux kernel version in use, along with additional information.
 
@@ -16,7 +30,7 @@ In the bash shell, type the command uname -a and then hit enter. This will displ
 
 Use the ls GNU utility to list files that end with the name release in this directory.
 
-  ~# ls /etc/*release and hit enter.
+    ~# ls /etc/*release and hit enter.
 
 In the bash shell, the asterisk character is a wildcard, also known as a globbing pattern, that allows for expansion. When using *release, the asterisk (*) expands to include any file name that ends in release, with any characters before it, like /etc/os-release, which you should see in your output.
 
@@ -24,7 +38,7 @@ Now you will get some information on the Operating System using the cat GNU util
 
 4. Type the command cat /etc/*release and then hit enter, to find information on the Operating System.
 
-  ~# cat /etc/*release
+    ~# cat /etc/*release
 
 The cat command will concatenate and output the contents of all of the files that match the file name parameter that is specified after it.
 
@@ -34,7 +48,7 @@ Type the command ls -lah /boot and then hit enter to list all the files in the /
 
 The l option lists one file per line, the a option lists all files, including hidden files, and the h option displays human readable file sizes.
 
-  ~# ls -lah /boot
+    ~# ls -lah /boot
 
 Notice that in this example screenshot above, the active Linux kernel is version 6.2.0-1011-aws. You can determine this because the initrd.img and vmlinuz boot files are symbolically linked (pointed) to boot files with this kernel version specified.
 
@@ -42,7 +56,7 @@ Notice that in this example screenshot above, the active Linux kernel is version
 
 1. Type the command ls -lah / and hit enter. The output should display all files in the root directory.
 
-   ~# ls -lah /
+    ~# ls -lah /
 
   - You can see a few symbolic links defined here, which are similar to shortcuts or pointers. The /bin directory is linked ( indicated by -> ) to usr/bin, for example.
   
@@ -94,50 +108,50 @@ The shell already has many built in variables, including for the shell executabl
 
 1. Type echo $SHELL and hit enter. Should return the name of the shell where you are running this command, e.g /bin/bash
 
-   ~# $SHELL
+    ~# echo $SHELL
 
 You can call a variable name by prefixing it with the $ symbol. Shell variables are typically UPPERCASE with underscores (_) used to delimit words in the name. In this example, you used the echo command to write out (or echo) the value of the shell variable named SHELL to the standard output (also known as stdout). You can see here that the value assigned to this variable is /bin/bash , which is the location of the binary executable of the shell being used.
 
 2. So you can see that there is a "built in" shell variable named SHELL, but what about the other shell variables available on the system? To find those, you'll use the env (environment) command. Type env and hit enter.
 
-     ~# env
+    ~# env
    
 4. You can also set your own custom shell variable! Type OPEN_SOURCE="rocks!" and hit enter.
 
-   ~# OPEN_SOURCE="rocks!"
+    ~# OPEN_SOURCE="rocks!"
 
   Note:
   - You cannot have any spaces between the shell variable name, the equal sign, and the value that you are assigning to the shell variable.
   - Values are often surrounded in double quotes or single quotes to avoid shell expansion of the values.
   - You set the variable's value without using the $ symbol, but when you reference it, you must prepend the $ symbol to the variable name to let the bash shell know that you are referencing a variable.
 
-  Run the command below to make sure your new variable is in the list of variabels:
-
-  ~# env | grep OPEN_SOURCE
-
 6. Then type echo $OPEN_SOURCE and hit enter. You should see output similar to the below screenshot.
 
-   ~# echo $OPEN_SOURCE
+    ~# echo $OPEN_SOURCE
 
 8. Type bash and hit enter to launch a new shell session. Type echo $OPEN_SOURCE and hit enter.
 
-   ~# bash
-   ~# $OPEN_SOURCE
+    ~# bash
+    ~# $OPEN_SOURCE
 
 Notice that nothing is printed or echo'ed out. What happened to your shell variable?
 When you set a shell variable's value, by default, it only exists in its current shell environment. 
 If you want it to persist across other shell sessions, you need to export it. You will try that next. for now exit the new shell
 
-  ~# exit
+    ~# exit
 
 9. You can overwrite or update the value of a shell variable by initializing it or setting it again, with a new value.
 
-  ~# OPEN_SOURCE="persists!"
-  ~# echo $OPEN_SOURCE
+    ~# OPEN_SOURCE="persists!"
+    ~# echo $OPEN_SOURCE
 
 10. Type export OPEN_SOURCE and hit enter. This allows the shell variable to persist across other shell sessions/environments.
 
     ~# export OPEN_SOURCE
+
+  Run the command below to make sure your new variable is in the list of variabels:
+
+    ~# env | grep OPEN_SOURCE    
 
 11. Start a new shell
 
@@ -145,22 +159,22 @@ If you want it to persist across other shell sessions, you need to export it. Yo
 
 12. Print custom variable
 
-   ~# echo $OPEN_SOURCE
+    ~# echo $OPEN_SOURCE
 
   Run the command below to make sure your new variable is in the list of variabels:
 
-   ~# env | grep OPEN_SOURCE
+    ~# env | grep OPEN_SOURCE
 
 13. To delete a shell variable, use unset:
 
-  ~# unset OPEN_SOURCE
+    ~# unset OPEN_SOURCE
   
 Note no $ is used, similar to when setting it.
 
 You can use echo and env to notice that the variable no longer exists in this shell.
 
-  ~# echo $OPEN_SOURCE
-  ~# env
+    ~# echo $OPEN_SOURCE
+    ~# env
 
 Here are some things to try out:
 
@@ -169,6 +183,17 @@ Here are some things to try out:
 - Use the cat command to view the contents of a file that you have not yet inspected.
 - Explore the shell variables that are available to you and learn what information they provide. You have unlimited power within this virtual
 
+# install "plocate" and "tree" unity
+
+- suod apt install -y plocate
+- suod apt install -y tree
+
+e.g locate ./.bashrc  (returns the path). All files create before the installation can be located. For files created after run:
+
+- sudo updatedb
+
+# tree utility usage
+- tree (returns a tree like structure for alll files in the directory) /path/to/directory
 
 
 
