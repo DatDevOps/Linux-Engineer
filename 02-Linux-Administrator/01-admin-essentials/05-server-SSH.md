@@ -292,7 +292,7 @@ Exit and save file (:q)
 
 $ exit (exit as root user)
 
-$ systemctl restart ssd
+$ systemctl restart sshd
 
 Now you cannot ssh into from to either  server without private/public rsa key on the server (see above methods of ssh-ing using private key to do so into a server with the public key)
 
