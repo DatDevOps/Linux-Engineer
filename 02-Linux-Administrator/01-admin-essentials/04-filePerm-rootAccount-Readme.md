@@ -358,6 +358,8 @@ To edit the sudoers file run:
 
 $ sudo visudo (opens the sudoers file in the default editor, which is VI editor)
 
+**** To read more about controlling file permissions using ACL, go to 02-Linux-Administrator\04-storage-management\04-acl.cmd.md module
+
 
 
 
