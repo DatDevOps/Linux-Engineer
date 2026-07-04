@@ -52,13 +52,21 @@ Note that the default permission for a file is '-rw-rw-r--' and that of a direct
 
 # umask
 
+$ umask (shows the set umask for the system in numbers)
+
+    0002
+
 The umask for link user by default is '0002'. Counting from right to left, i.e others=>group=>user
 Umask removes permissions and can not add permissions
 
-0   => Remove no permission for
+0   => Remove no permission
 0   => Remove no permission for user
 0   => Remove no permission for group
 2   => Remove permission write permssions  for others
+
+$ umask -S (shows the set umask for the system in text)
+
+    u=rwx,g=rwx,o=rx
 
 Note that added execute permissions, x, are not shown in output excepts files are executables which they are not
 
