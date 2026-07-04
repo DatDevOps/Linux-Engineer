@@ -102,7 +102,7 @@ $ ls -l | grep file4
 
 Another way  to set umask is show below by using text to add only what is needed:
 
-$ umask u=rwx,g=rx,o=rx
+$ umask u=rwx,g=rx,o=rx (same as 0022 and this method shows what permission to keep and what is not indicated is removed.)
 
 $ touch file5
 
