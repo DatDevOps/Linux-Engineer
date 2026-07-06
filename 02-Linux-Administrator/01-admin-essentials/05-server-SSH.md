@@ -294,18 +294,61 @@ Login into each of the server and run
 
 $ sudo vi /etc/ssh/sshd_config
 
-Change the line:
+Change the line below if not the default already:
 
 PermitRootLogin yes/no ==> PermitRootLogin without-password
 
-Exit and save file (:q)
+Exit and save file (:x)
 
 $ exit (exit as root user)
 
 $ systemctl restart sshd
 
-Now you cannot ssh into from to either  server without private/public rsa key on the server (see above methods of ssh-ing using private key to do so into a server with the public key)
+Now you cannot ssh into from/to either server directly as root without private/public rsa key on the server (see above methods of ssh-ing using private key to do so into a server with the public key)
 
+Now from the Centos server try:
+
+[cloud_user@c71f0fe92f2c]$ ssh cloud_user@server1 [it should succeed (enter correct passkey if prompted)]
+
+    Last login: Mon Jan  6 15:55:48 2026 from 44.220.177.228
+       ,     #_
+       ~\_  ####_        Amazon Linux 2
+      ~~  \_#####\
+      ~~     \###|       AL2 End of Life is 2026-01-30.
+      ~~       \#/ ___
+       ~~       V~' '->
+        ~~~         /    A newer version of Amazon Linux is available!
+          ~~._.   _/
+             _/ _/       Amazon Linux 2023, GA and supported until 2028-03-15.
+           _/m/'           https://aws.amazon.com/linux/amazon-linux-2023/
+
+[cloud_user@c71f0fe92f2c]$ ssh root@server1 [it should not succeed even with coorect root password]
+
+Why it exists?
+This setting improves security because:
+
+Attackers frequently target the root account.
+Passwords can be guessed or brute-forced.
+SSH key authentication is significantly more secure than passwords.
+
+Many Linux distributions historically shipped with this setting as a safer default
+Modern equivalent
+In newer OpenSSH versions, without-password is deprecated and replaced by:
+
+    PermitRootLogin prohibit-password
+
+These settings are equivalent. The newer name is less ambiguous because many administrators mistakenly interpreted without-password as "allow login without entering a password."
+
+Common values for PermitRootLogin
+- yes ==> Root can log in using any allowed authentication method.
+- prohibit-password (without-password) ==> Root can log in only with SSH keys or other non-password methods.
+- forced-commands-only ==> Root login allowed only for key-based forced commands (often used for backups).
+- no ==> Root login over SSH completely disabled.
+
+Recommended practice
+On most production Linux servers (including RHEL, Amazon Linux, Ubuntu):
+
+    PermitRootLogin no
 
 # copy files between server (Centos => Amazon and vice/versa)
 
