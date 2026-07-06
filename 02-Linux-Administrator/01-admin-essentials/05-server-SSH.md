@@ -197,7 +197,7 @@ drwx------. 17 cloud_user cloud_user 4.0K Feb 25 17:48 ..
 
 Copying our new generated ssh public key to Amazon server and any other server you might have in the Centos server ~/.ssh/config file
 
-You can ct the id_rsa.pub file, copy the content, log into the Amazon server, create a file in with same name in ~/.ssh/id_rsa.pub, and paste the copied content.
+You can cat the id_rsa.pub file, copy the content, log into the Amazon server, create a file in with same name in ~/.ssh/id_rsa.pub, and paste the copied content.
 
 OR do the below from Centos server :
 
@@ -233,15 +233,25 @@ Last login: Wed Feb 25 19:03:26 2026 from 98.93.244.117
 14 package(s) needed for security, out of 17 available
 Run "sudo yum update" to apply all updates.
 
-[cloud_user@c71f0fe92f1c ~]$ ls -la (checking files id_rsa.pub was copied)
+[cloud_user@c71f0fe92f1c ~]$ cat .ssh/authorized_keys (The Centos serverpublic key value in id_rsa.pub should be appended here on a newline)
 
-    total 16
-    drwx------ 2 cloud_user cloud_user  80 Feb 25 19:03 .
-    drwx------ 3 cloud_user cloud_user 184 Feb 25 19:03 ..
-    -rw------- 1 cloud_user cloud_user 802 Feb 25 19:04 authorized_keys
-    -rw------- 1 cloud_user cloud_user  88 Feb 25 19:03 config
-    -rw-rw-r-- 1 cloud_user cloud_user 421 Feb 25 18:44 id_rsa.pub
-    -rw-r--r-- 1 cloud_user cloud_user 524 Feb 25 19:03 known_hosts
+    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCv86K5tOtssAJsrcRzY4r6onAdB8ky3sDmw8SMv
+    3+5iDqj6VMNBefjlqL0xSzo8GskgYvGpKO2hieZ52/MgYYo/OmrGD+BKhZfZIMExO38SPe+tduY2e
+    KeNxLwR6BaTtKrj52vQ2EtwjwmNMj9t6Lj3Wq9WR3HLfj7Jup1+6Sk+msEiFD0KA9T3Egf+gy1JQe
+    vzJHZhzIvf5QCSw8I56TGAj4vc3IEmu2Xb0whdyC9eHFDOMR+HmGJ3LvcKLHvN3IbD8j8Op1NRyyG
+    qNn0T2fILm6Je8/nCnd8VtP8PF+J+n//lpv+JslkILrjru4O3/FdkT85mgIVuw8vg3iLt+un
+    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfs7ALTfafVV1M/KEbVZtlXYCPlD+hl8TMBHfCo
+    7V2dYd7oIYoVD5Fmp2XXCCpCukSKrR2SpYkzKUJa1L1Ce6FTfAq9Yy6hUwbkDkEe37J25z9qKVWy
+    tXgLtyXr3liWse/SmAEOMcP4VS4wkgfIwqesPIJY+EPXymsFikI7+zZMLtTYxwru/5ReK0nvAA2K6
+    m/ADcjjf8MHgrMuaaPrQC2nX4BR/q2FXis2AWJ29NA+AmS1QZ9WrzEo5L2hJVFPond+4HJrN2d1mA
+    yd8151lu34xFJ4NBtsWkr/mezvwva7inzsGHHC+BWe3kyC3KClR+wTlWcPDN8P6AIhZGXzFh tyle
+    r-h-cloud-servers
+    ssh-rsa AABCB3NzaC1yc2EAAAADAQABAAABAQC+LDFq+XijXPhzTN0aKa86YLJAycOadgoHpRja6
+    AEUBAlo4hUAKyKTFaFQiWGw83M37fi8VShI0Jr7A40bdF6j3SS6fWjJ8ZUBlvkD/hdU/nj9z0trM5
+    9DD/94zTsf2PsA80ZtWdpjzEtpp+6o85KVStFSiwPYRdFVqNO9mkHlOtiA8+rtq8YJbNFUw+FYVU5
+    s5DgZH+oAF6T9U9JAKYqC+dVyLot0w05JOtVk2dnXUVajybenLBqH2nuq3XGE/lhCMy1WBQaqYDt3
+    eN4rqY14l0RZHx6RLh+Oi/u4ZPIk1h/hbzm3/XXX/m8PJvAGTKYwAUr1Ugpj2yRo1wuyyYlD clou
+    d_user@c71f0fe92f2c.mylabserver.com
 
 [cloud_user@c71f0fe92f1c ~]$ exit
 
